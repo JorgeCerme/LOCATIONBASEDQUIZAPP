@@ -73,16 +73,14 @@
 	markers[i].openPopup()
 	}
 	}
-	
 	}
-
+	
 	// JavaScript Document
 	var xhr; // define the global variable to process the AJAX request
 	function getQuestions() {
 	xhr = new XMLHttpRequest();
 	xhr.open("GET", 'https://developer.cege.ucl.ac.uk:31091/questions', true);
 	xhr.onreadystatechange = processQuestions;
-
 	xhr.send();
 	}
 	function processQuestions() {
@@ -103,11 +101,6 @@
 "</button> <button onclick='verifyAnswer(\"" + question.correctanswer + "\",\""+question.option3+"\")'>" + question.option3 + 
 "</button> <button onclick='verifyAnswer(\"" + question.correctanswer + "\",\""+question.option4+"\")'>" + question.option4 + "</button>  </div>");
 	}
-
-	
-	
-	
-	
 	}
 	}
 	document.addEventListener('DOMContentLoaded', trackLocation)
@@ -131,12 +124,7 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
  dist = (subAngle/360) * 2 * Math.PI * 3956; // ((subtended angle in degrees)/360) * 2 * pi * radius )
 // where radius of the earth is 3956 miles
  return  dist = dist * 1.609344 ; // convert miles to km
- 
-}
-/*
-Next Steps
-6. Feedback on answer
-*/
+ }
 
 </script>
 </head>
@@ -146,43 +134,22 @@ Next Steps
         <div class="mdl-layout__header-row">
           <span class="mdl-layout-title">UCL LOCATION-BASED QUIZ</span>
           <div class="mdl-layout-spacer"></div>
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-            <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
-              <i class="material-icons">search</i>
-            </label>
-            <div class="mdl-textfield__expandable-holder">
-              <input class="mdl-textfield__input" type="text" id="search">
-              <label class="mdl-textfield__label" for="search">Enter your query...</label>
-            </div>
           </div>
-          <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
-            <i class="material-icons">more_vert</i>
-          </button>
-          <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
-            <li class="mdl-menu__item">About</li>
-            <li class="mdl-menu__item">Contact</li>
-            <li class="mdl-menu__item">Legal information</li>
-          </ul>
-        </div>
-      </header>
-	        <div class="demo-drawer mdl-layout__drawer mdl-color--transparent-transparent-0 mdl-color-text--blue-grey-900">
-            <b>This code will display your current location</b>
-<div id='showLocation'>Location will be displayed here</div>
-<button id='trackLocation' onclick='trackLocation()'>Click Me to Get Your Location</button>
-			</div>
+      </header>        
+			
       <main class="mdl-layout__content mdl-color--grey-100">
         <!-- the mapid div will hold the map -->
 		<div id="mapid" style="width: 850px; height: 500px;"></div>
+		<b>Do you want to know where you are?</b>
+<div id='showLocation'>Latitude, Longuitude + Tracking Marker</div>
+<button id='trackLocation' onclick='trackLocation()'>Click Me to Get Your Location</button>
       </main>
     </div>
-      
-      <a href="https://github.com/google/material-design-lite/blob/mdl-1.x/templates/dashboard/" target="_blank" id="view-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white">View Source</a>
-
-	  
-<!-- the following script will load the map and set the default view and zoom, as well as loading the basemap tiles -->
+	</div>
+  
 <script>
 // load the map
-var mymap = L.map('mapid').setView([51.35, -0.1335], 17);
+var mymap = L.map('mapid').setView([51.524, -0.132625], 16.4999);
 // load the tiles
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
 maxZoom: 18,
@@ -201,7 +168,6 @@ popup
 .setContent("You clicked the map at " + e.latlng.toString())
 .openOn(mymap);
 }
-
 
 // now add the click event detector to the map
 mymap.on('click', onMapClick);
