@@ -69,7 +69,7 @@
 	var question = questions[i]
 	var distance = calculateDistance(question.latitude, question.longitude, position.coords.latitude, position.coords.longitude) 
 	console.log(i+", "+distance)
-	if (distance < 10){
+	if (distance < 0.10){
 	markers[i].openPopup()
 	}
 	}
